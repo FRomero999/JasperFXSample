@@ -18,10 +18,11 @@ public class ReportService {
 
     public void generateReport() throws SQLException, JRException {
         System.out.println( "Hello World!" );
-        Connection c = DriverManager.getConnection("jdbc:mysql://localhost/ad","root","");
+        Connection c = MySQLConnection.getConnection();
 
         HashMap hm = new HashMap<>();
-        var jasperPrint = JasperFillManager.fillReport("informe.jasper",hm,c);
+        //hm.put("jugadores",1);
+        var jasperPrint = JasperFillManager.fillReport("listado.jasper",hm,c);
 
         var visor = new JRViewer(jasperPrint);
 
@@ -43,4 +44,6 @@ public class ReportService {
 
         System.out.print("Done!");
     }
+
+
 }
